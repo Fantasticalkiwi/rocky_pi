@@ -37,17 +37,11 @@ legend("Experimental data", "Fitted line")
 
 %Tau = 1/(zeta*omega_n)
 
-tau = 1/(zeta*omega_n)
-%Tau = 5.4614 with start_idx at 2500
+tau 
 
 
-omega_n
-%Omega_n = 4.7764 with start_idx at 2500
 
-l_eff = 9.8/(omega_n^2)
-%L_eff = 0.4296 with start_idx at 2500
 
-%%%%%%%%%%%%%%%%%%% EXTRA BS STUFF %%%%%%%%%%%%%%%%%%%%%%
 
 % 
 % 
