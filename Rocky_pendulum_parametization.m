@@ -1,21 +1,30 @@
 %path and filename of Rocky pendulum data set
-fname = 'rocky_pendulum_estimation_data01.mat';
+fname = 'Gyro_calibration_v3.txt';
 %load the contents of the file into struct Q
 Q = load([fname]);
+
+start_idx = 1400;
 %unpack the experimental data
-t = Q.t/1000; %time (sec)
-theta = Q.theta; %pendulum angle (rad)
+t = Q(start_idx:end, 1); %*1000; %time (sec)
+theta = Q(start_idx:end, 2); %pendulum angle (rad)
+
 %plot free response data
-figure(1);
+figure();
 hold on
-plot(t,theta,'k');
+plot(t,theta,'r');
+
+
 %create axis labels, title and legend
-title('Rocky Pendulum Free Response Data');
+title('Rocky Pendulum Free Response Gyro Data');
 xlabel('t (sec)');
 ylabel('angle (rad)');
 
-[pks, locs] = findpeaks(y, t); 
-locs = t(locs);
+
+
+
+
+[pks, locs] = findpeaks(theta, t); 
+% locs = t.*(locs);
 %tau = oscillation period
 tau = mean(diff(locs));      % Calculate average period
 
