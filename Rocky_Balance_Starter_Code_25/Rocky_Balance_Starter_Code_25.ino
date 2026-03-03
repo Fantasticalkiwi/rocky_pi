@@ -15,7 +15,7 @@
 #include <Balboa32U4.h>
 #include <Wire.h>
 #include <LSM6.h>
-#include "Balance.h"
+//#include "Balance.h"
 
 
 extern int32_t angle_accum;
@@ -86,17 +86,17 @@ void BalanceRocky()
 
     // **************Enter the control parameters here
     
-  tau_pendulum = 5.4614;
-  tau_motor_L = .0676; 
-  alpha_motor = 1/tau;
-  beta_motor_L = 8.475*10^-4;
-  beta_motor_R = 8.224*10^-4; 
-  tau_motor_R = .064; 
-  omega_n = 4.7764;
-  l_eff = 0.4296;
+  float tau_pendulum = 5.4614;
+  float tau_motor_L = .0676; 
+  float alpha_motor = 1/tau;
+  float beta_motor_L = 8.475*10^-4;
+  float beta_motor_R = 8.224*10^-4; 
+  float tau_motor_R = .064; 
+  float omega_n = 4.7764;
+  float l_eff = 0.4296;
 
-  float Kp =  1.5881e*10^4;
-  float Ki =  7.6530e*10^4;
+  float Kp =  1.5881*10^4;
+  float Ki =  7.6530*10^4;
   float Ci = 0;   
   float Jp = 0;
   float Ji = 0;
@@ -104,8 +104,8 @@ void BalanceRocky()
 
 
 
-    float v_c_L, v_c_R; // these are the control velocities to be sent to the motors
-    float v_d = 0; // this is the desired speed produced by the angle controller
+  float v_c_L, v_c_R; // these are the control velocities to be sent to the motors
+  float v_d = 0; // this is the desired speed produced by the angle controller
 
 
    // Variables available to you are: 
@@ -118,7 +118,7 @@ void BalanceRocky()
    // dist_accum - integral of the distance
 
    // *** enter an equation for v_d in terms of the variables available ****
-    v_d = -angle_rad*Kp - Ki*angle_rad_accum;   // this is the motor signal from the angle controller 
+  v_d = -angle_rad*Kp - Ki*angle_rad_accum;   // this is the motor signal from the angle controller 
 
 
   // The next two lines implement the feedback controller for the motor. Two separate velocities are calculated. 
@@ -128,8 +128,8 @@ void BalanceRocky()
   // right to left. This helps ensure that the Left and Right motors are balanced
 
   // *** enter equations for input signals for v_c (left and right) in terms of the variables available ****
-    v_c_R = v_d
-    v_c_L = v_d       
+    v_c_R = v_d;
+    v_c_L = v_d;      
 
 
 
@@ -189,7 +189,7 @@ void UpdateSensors()
   uint16_t ms = millis();
 
   // Perform the balance updates at 100 Hz.
-  balanceUpdateDelayedStatus = ms - lastMillis > UPDATE_TIME_MS + 1;
+  int balanceUpdateDelayedStatus = ms - lastMillis > UPDATE_TIME_MS + 1;
   lastMillis = ms;
 
   // call functions to integrate encoders and gyros
@@ -251,7 +251,8 @@ void loop()
   
   cur_time = millis();                   // get the current time in miliseconds
 
-
+  float angle_rad - 0;
+  float angle = 
   if((cur_time - prev_time) > UPDATE_TIME_MS){
     UpdateSensors();                    // run the sensor updates.
     
