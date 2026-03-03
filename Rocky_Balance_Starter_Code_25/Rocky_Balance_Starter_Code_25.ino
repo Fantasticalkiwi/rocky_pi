@@ -95,8 +95,8 @@ void BalanceRocky()
   omega_n = 4.7764;
   l_eff = 0.4296;
 
-  float Kp = 0;
-  float Ki = 0;
+  float Kp =  1.5881e*10^4;
+  float Ki =  7.6530e*10^4;
   float Ci = 0;   
   float Jp = 0;
   float Ji = 0;
@@ -118,7 +118,7 @@ void BalanceRocky()
    // dist_accum - integral of the distance
 
    // *** enter an equation for v_d in terms of the variables available ****
-    v_d = angle_rad*Kp + angle_rad*Ki/angle_rad_accum;   // this is the motor signal from the angle controller 
+    v_d = -angle_rad*Kp - Ki*angle_rad_accum;   // this is the motor signal from the angle controller 
 
 
   // The next two lines implement the feedback controller for the motor. Two separate velocities are calculated. 
