@@ -3,7 +3,7 @@ fname = 'GC_3_12_v1.txt';
 %load the contents of the file into struct Q
 Q = load([fname]);
 
-start_idx = 2500; %1695
+start_idx = 1; %1695
 end_idx = 3500;
 %unpack the experimental data
 t = Q(start_idx:end_idx, 1) - Q(start_idx, 1); %*1000; %time (sec), zeroed. 
@@ -38,7 +38,8 @@ legend("Experimental data", "Fitted line")
 
 %Tau = 1/(zeta*omega_n)
 
-tau = 1/(zeta*omega_n)
+tau = 1/(zeta*omega_n);
+tau_pendulum = tau
 %Tau = 5.4614 with start_idx at 2500
 
 
