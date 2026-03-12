@@ -15,7 +15,7 @@ y_R = motor_data(100:200,4); v_R = motor_data(100:200,5);
 figure(1);
 subplot(2,1,1);
 hold on
-plot(t,v_L,'k','linewidth',1);
+plot(t,v_L,'g','linewidth',1);
 plot(t,v_R,'r','linewidth',1);
 xlabel('time (sec)'); ylabel('wheel speed (m/sec)');
 title('Motor Calibration Data');
@@ -23,7 +23,7 @@ h1 = legend('Left Wheel','Right Wheel');
 set(h1,'location','southeast');
 subplot(2,1,2);
 hold on
-plot(t,y_L,'k','linewidth',1);
+plot(t,y_L,'g','linewidth',1);
 plot(t,y_R,'r--','linewidth',1);
 xlabel('time (sec)'); ylabel('wheel command (-)');
 title('Motor Calibration Data');
@@ -42,7 +42,7 @@ vL_fit = c.*(1-exp(-a.*t));
 %compare fit with the data
 hold on
 plot(t,v_L,'ro','markerfacecolor','r','markersize',2);
-plot(t,vL_fit,'k','linewidth',2);
+plot(t,vL_fit,'g','linewidth',2);
 xlabel('t (s)'); ylabel('v_L (m/s)'); title('Fit Motor Data Left Wheel');
 legend('Data','Fit');
 tau_L = 1/a
@@ -60,7 +60,7 @@ vR_fit = c*(1-exp(-a*t));
 %compare fit with the data
 hold on
 plot(t,v_R,'ro','markerfacecolor','r','markersize',2);
-plot(t,vR_fit,'k','linewidth',2);
+plot(t,vR_fit,'g','linewidth',2);
 xlabel('t (s)'); ylabel('v_L (m/s)'); title('Fit Motor Data Right Wheel');
 legend('Data','Fit');
 tau_R = 1/a
