@@ -1,7 +1,7 @@
 %loads and plots the motor calibration data
 function [t, y_L, v_L, y_R, v_R] = load_motor_data()
 %path and file name of data
-fname = 'motor_calibration_data.txt'; %file name (change this!)
+fname = 'MC_3_12_v2.CoolTermSettings'; %file name (change this!)
 %load the motor calibration data
 motor_data = importdata([fname]);
 %unpack the motor calibration data
