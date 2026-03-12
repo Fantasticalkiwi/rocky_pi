@@ -85,18 +85,11 @@ void BalanceRocky()
 {
 
     // **************Enter the control parameters here
-    
-  float tau_pendulum = 5.4614;
-  float tau_motor_L = .0676; 
-  float alpha_motor = 1/tau;
-  float beta_motor_L = 8.475*10^-4;
-  float beta_motor_R = 8.224*10^-4; 
-  float tau_motor_R = .064; 
-  float omega_n = 4.7764;
-  float l_eff = 0.4296;
 
-  float Kp =  1.5881*10^4;
-  float Ki =  7.6530*10^4;
+  float Kp =  1.5460*1000;
+  float Ki =  7.1429*1000;
+
+
   float Ci = 0;   
   float Jp = 0;
   float Ji = 0;
