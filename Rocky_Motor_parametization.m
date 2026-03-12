@@ -1,7 +1,7 @@
 %loads and plots the motor calibration data
 function [t, y_L, v_L, y_R, v_R] = load_motor_data()
 %path and file name of data
-fname = 'MC_3_12_v2.CoolTermSettings'; %file name (change this!)
+fname = 'MC_3_12_v3.txt'; %file name (change this!)
 %load the motor calibration data
 motor_data = importdata([fname]);
 %unpack the motor calibration data
@@ -45,8 +45,8 @@ plot(t,v_L,'ro','markerfacecolor','r','markersize',2);
 plot(t,vL_fit,'k','linewidth',2);
 xlabel('t (s)'); ylabel('v_L (m/s)'); title('Fit Motor Data Left Wheel');
 legend('Data','Fit');
-tau_L = 1/a;
-beta_L = c/y_L;
+tau_L = 1/a
+beta_L = c/max(y_L)
 
 figure();
 a_g = 1; c_g = 1;
@@ -63,10 +63,10 @@ plot(t,v_R,'ro','markerfacecolor','r','markersize',2);
 plot(t,vR_fit,'k','linewidth',2);
 xlabel('t (s)'); ylabel('v_L (m/s)'); title('Fit Motor Data Right Wheel');
 legend('Data','Fit');
-tau_R = 1/a;
-beta_R = c/y_R;
+tau_R = 1/a
+beta_R = c/max(y_R)
 
 
 end
 
-[t, y_L, v_L, y_R, v_R] = load_motor_data()
+[t, y_L, v_L, y_R, v_R] = load_motor_data();
