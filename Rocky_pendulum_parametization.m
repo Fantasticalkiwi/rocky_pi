@@ -1,12 +1,13 @@
 %path and filename of Rocky pendulum data set
-fname = 'Gyro_calibration_v3.txt';
+fname = 'GC_3_12_v1.txt';
 %load the contents of the file into struct Q
 Q = load([fname]);
 
 start_idx = 2500; %1695
+end_idx = 3500;
 %unpack the experimental data
-t = Q(start_idx:end, 1) - Q(start_idx, 1); %*1000; %time (sec), zeroed. 
-theta = Q(start_idx:end, 2); %pendulum angle (rad)
+t = Q(start_idx:end_idx, 1) - Q(start_idx, 1); %*1000; %time (sec), zeroed. 
+theta = Q(start_idx:end_idx, 2); %pendulum angle (rad)
 
 %plot free response data
 figure();
@@ -46,6 +47,7 @@ omega_n
 
 l_eff = 9.8/(omega_n^2)
 %L_eff = 0.4296 with start_idx at 2500
+theta_offset = D
 
 %%%%%%%%%%%%%%%%%%% EXTRA BS STUFF %%%%%%%%%%%%%%%%%%%%%%
 
