@@ -80,12 +80,6 @@ Balboa32U4ButtonA buttonA;
 
 void BalanceRocky() {
 
-  //og values
-  //Ki = 13194
-  //Kp = 2976.5
-  //C_i = -1358.9
-  //J_i= -1653.3
-  //J_p = 75.1
   float Ki = 13194;
   float Kp = 2976.5;
   float Ci = -1358.9;
