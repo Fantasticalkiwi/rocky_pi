@@ -120,8 +120,8 @@ void BalanceRocky() {
   // right to left. This helps ensure that the Left and Right motors are balanced
 
   // *** enter equations for input signals for v_c (left and right) in terms of the variables available ****
-  v_c_R = -Jp*(v_d-measured_speedR)-Ji*distRight_m-Ci*dist_accum;
-  v_c_L = -Jp*(v_d-measured_speedL)-Ji*distLeft_m-Ci*dist_accum;
+  v_c_L = v_d-Jp*(measured_speedR)-Ji*distRight_m-Ci*dist_accum;
+  v_c_R = v_d-Jp*(measured_speedL)-Ji*distLeft_m-Ci*dist_accum;
 
   // save desired speed for debugging
   desSpeedL = v_c_L;
