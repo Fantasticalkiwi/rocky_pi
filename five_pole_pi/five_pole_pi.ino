@@ -80,22 +80,17 @@ Balboa32U4ButtonA buttonA;
 
 void BalanceRocky() {
 
-  // // float Kp =  2.9765 * 1000;
-  // float Kp =  6 * 1000;
-  // // float Ki = 1.3194 * 10000;
-  float Ki = .4 * 10000;
-  // // float Ji = -1.6533 * 1000;
-  float Ji = -.4 * 1000;
-  // // float Jp = 75.1522;
-  // float Jp = 30;
-  // float Ci = -1.3589 * 1000;
-  // // float Ci = -2.5 * 1000;
-
-  float Kp = 2222;
-  // float Ki = 4000;
-  float Ci = -651;
-  float Jp = 28.6;
-  // float Ji = -846.3;
+  //og values
+  //Ki = 13194
+  //Kp = 2976.5
+  //C_i = -1358.9
+  //J_i= -1653.3
+  //J_p = 75.1
+  float Ki = 13194;
+  float Kp = 2976.5;
+  float Ci = -1358.9;
+  float Ji = -1653.3;
+  float Jp = 75.1;
 
   float v_c_L, v_c_R; // these are the control velocities to be sent to the motors
   float v_d = 0; // this is the desired speed produced by the angle controller
@@ -120,8 +115,8 @@ void BalanceRocky() {
   // right to left. This helps ensure that the Left and Right motors are balanced
 
   // *** enter equations for input signals for v_c (left and right) in terms of the variables available ****
-  v_c_L = v_d-Jp*(measured_speedR)-Ji*distRight_m-Ci*dist_accum;
-  v_c_R = v_d-Jp*(measured_speedL)-Ji*distLeft_m-Ci*dist_accum;
+  v_c_L = -v_d-Jp*(measured_speedL)-Ji*distRight_m-Ci*dist_accum;
+  v_c_R = -v_d-Jp*(measured_speedR)-Ji*distLeft_m-Ci*dist_accum;
 
   // save desired speed for debugging
   desSpeedL = v_c_L;
