@@ -139,12 +139,15 @@ void lyingDown()
   distanceRight = 0;
   motors.setSpeeds(0, 0);
 
+  // Serial.println(angle);
+
   if (angleRate > -6 && angleRate < 6)
   {
+    // Serial.println("DOING THINGS");
     // It's really calm, so we know the angles.
     if (imu.a.z > 0)
     {
-      
+      // Serial.println("reset to 94.8");
       // this is based on coarse measurement of what I think the angle would be resting on the flat surface. 
       // this corresponds to 94.8 degrees
       angle = 94827;
@@ -152,6 +155,7 @@ void lyingDown()
     }
     else
     {
+      // Serial.println("reset to -94.8");
       // this is based on coarse measurement of what I think the angle would be resting on the flat surface. 
          angle = -94827; 
     }

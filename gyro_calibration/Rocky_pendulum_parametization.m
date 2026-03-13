@@ -3,7 +3,7 @@ fname = 'GC_3_12_v1.txt';
 %load the contents of the file into struct Q
 Q = load([fname]);
 
-start_idx = 1; %1695
+start_idx = 2150;
 end_idx = 3500;
 %unpack the experimental data
 t = Q(start_idx:end_idx, 1) - Q(start_idx, 1); %*1000; %time (sec), zeroed. 
@@ -12,7 +12,7 @@ theta = Q(start_idx:end_idx, 2); %pendulum angle (rad)
 %plot free response data
 figure();
 hold on
-plot(t,theta,'w.');
+plot(t,theta,'k.');
 
 
 %create axis labels, title and legend
