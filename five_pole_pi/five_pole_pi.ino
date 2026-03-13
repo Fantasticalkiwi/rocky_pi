@@ -67,7 +67,7 @@ Balboa32U4Encoders encoders;
 Balboa32U4Buzzer buzzer;
 Balboa32U4ButtonA buttonA;
 
-#define FIXED_ANGLE_CORRECTION (0.279)  // ***** Replace the value 0.25 with the value you obtained from the Gyro calibration procedure
+#define FIXED_ANGLE_CORRECTION (0.25)  // ***** Replace the value 0.25 with the value you obtained from the Gyro calibration procedure
 
 // decreasing offset makes it favor the back
 
@@ -80,14 +80,22 @@ Balboa32U4ButtonA buttonA;
 
 void BalanceRocky() {
 
-  float Kp =  1.5460*1000;
-  //float Kp = 4.5 * 1000;
-  //float Ki =  7.1429*1000;
-  float Ki = 2.5 * 1000;
+  // // float Kp =  2.9765 * 1000;
+  // float Kp =  6 * 1000;
+  // // float Ki = 1.3194 * 10000;
+  float Ki = .4 * 10000;
+  // // float Ji = -1.6533 * 1000;
+  float Ji = -.4 * 1000;
+  // // float Jp = 75.1522;
+  // float Jp = 30;
+  // float Ci = -1.3589 * 1000;
+  // // float Ci = -2.5 * 1000;
 
-  float Ci = 0;   
-  float Jp = 0;
-  float Ji = 0;
+  float Kp = 2222;
+  // float Ki = 4000;
+  float Ci = -651;
+  float Jp = 28.6;
+  // float Ji = -846.3;
 
   float v_c_L, v_c_R; // these are the control velocities to be sent to the motors
   float v_d = 0; // this is the desired speed produced by the angle controller
@@ -112,8 +120,8 @@ void BalanceRocky() {
   // right to left. This helps ensure that the Left and Right motors are balanced
 
   // *** enter equations for input signals for v_c (left and right) in terms of the variables available ****
-  v_c_R = -Jp*v_d-Ji*distRight_m-Ci*dist_accum;
-  v_c_L = -Jp*v_d-Ji*distLeft_m-Ci*dist_accum;
+  v_c_R = -Jp*(v_d-measured_speedR)-Ji*distRight_m-Ci*dist_accum;
+  v_c_L = -Jp*(v_d-measured_speedL)-Ji*distLeft_m-Ci*dist_accum;
 
   // save desired speed for debugging
   desSpeedL = v_c_L;
@@ -134,8 +142,8 @@ void BalanceRocky() {
 
 void setup() {
   // Uncomment these lines if your motors are reversed.
-  motors.flipLeftMotor(true);
-  motors.flipRightMotor(true);
+  // motors.flipLeftMotor(true);
+  // motors.flipRightMotor(true);
 
   Serial.begin(9600);
   prev_time = 0;
@@ -274,21 +282,21 @@ void loop() {
     while(!buttonA.getSingleDebouncedPress());
   }
 
-  // if(cur_time - prev_print_time > 103) {  // do the printing every 105 ms. Don't want to do it for an integer multiple of 10ms to not hog the processor
-  //   Serial.print(angle_rad);   
-  //   Serial.print("\t");
-  //   Serial.print(distLeft_m);
-  //   Serial.print("\t");
-  //   Serial.print(measured_speedL);
-  //   Serial.print("\t");      
-  //   Serial.print(measured_speedR);
-  //   Serial.print("\t");      
-  //   Serial.print(start_flag);
-  //   Serial.print("\t");
-  //   Serial.println(speedCont);
+  if(cur_time - prev_print_time > 103) {  // do the printing every 105 ms. Don't want to do it for an integer multiple of 10ms to not hog the processor
+    Serial.print(angle_rad);   
+    Serial.print("\t");
+    Serial.print(distLeft_m);
+    Serial.print("\t");
+    Serial.print(measured_speedL);
+    Serial.print("\t");      
+    Serial.print(measured_speedR);
+    Serial.print("\t");      
+    Serial.print(start_flag);
+    Serial.print("\t");
+    Serial.println(speedCont);
     
-  //   prev_print_time = cur_time;
-  // }
+    prev_print_time = cur_time;
+  }
 
  
 }
